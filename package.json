@@ -1,0 +1,59 @@
+{
+  "name": "flashbrowser",
+  "productName": "Flash Browser",
+  "description": "Lightweight Electron Browser For Games",
+  "homepage": "https://www.flashbrw.com",
+  "author": "Maatt and DYLON",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "electron .",
+    "publish": "electron-builder --win -p always",
+    "build": "electron-builder --win"
+  },
+  "license": "ISC",
+  "devDependencies": {
+    "electron": "^6.1.12",
+    "electron-builder": "^23.1.0"
+  },
+  "build": {
+    "appId": "com.flashbrw.app",
+    "extraResources": [
+      "./plugins/**"
+    ],
+    "directories": {
+      "buildResources": "resources",
+      "output": "release"
+    },
+    "publish": [
+      {
+        "provider": "github",
+        "owner": "asteroid-dev",
+        "repo": "FlashBrowser"
+      }
+    ],
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64",
+            "ia32"
+          ]
+        }
+      ]
+    },
+    "nsis": {
+      "installerIcon": "icon.ico",
+      "uninstallerIcon": "icon.ico",
+      "uninstallDisplayName": "Flash Browser",
+      "oneClick": true,
+      "perMachine": false,
+      "artifactName": "FlashBrowser.${ext}"
+    }
+  },
+  "dependencies": {
+    "electron-navigation": "^6.6.6",
+    "electron-updater": "^5.0.5"
+  }
+}
